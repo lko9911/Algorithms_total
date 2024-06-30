@@ -44,6 +44,9 @@ def preprocess_image(image_path):
     image = np.expand_dims(image, axis=0)
     return image
 
+# 모델 성능 평가
+## 모델 추출 후 별도 진행
+
 # 입력된 사진의 특징 추출
 input_image_path = 'path_to_your_input_image.jpg'
 extracted_features = extract_features(input_image_path)
