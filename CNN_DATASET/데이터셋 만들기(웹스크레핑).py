@@ -26,7 +26,7 @@ def preprocess_image(image_path, size=(32, 32)):
 
 # 예시로 사용할 이미지 URL 리스트
 image_urls = {
-    'class1': ['url1', 'url2', 'url3'],  # 실제 이미지 URL을 여기에 추가 ('C:/경로/test.png, jpg')
+    'class1': ['url1', 'url2', 'url3'],  # 실제 이미지 URL을 여기에 추가 (웹스크레핑 사이트 경로)
     'class2': ['url1', 'url2', 'url3'],
     'class3': ['url1', 'url2', 'url3'],
     ...
@@ -39,8 +39,8 @@ for cls, urls in image_urls.items():
         download_image(url, image_save_path)
 
         # 이미지 전처리
-        # image = preprocess_image(image_save_path)
-        # cv2.imwrite(image_save_path, (image * 255).astype(np.uint8))
+        image = preprocess_image(image_save_path)
+        cv2.imwrite(image_save_path, (image * 255).astype(np.uint8))
 
 # 데이터셋 로드 및 저장 예시
 def load_dataset(dataset_dir, classes, image_size=(32, 32)):
