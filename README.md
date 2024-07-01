@@ -36,6 +36,7 @@
 
 ### 2단계 : YOLO 모델 재학습 ✔️
 준비물 : 'cfg', 'weights', 'obj.names', 'obj.data' 어노테이션 파일
+솔류션 : PLAT_YOLO v5 학습, 데이터셋 라벨링을 따로 만들기
 
 - YOLO 설정 파일 수정
 <pre><code>convolutional]
