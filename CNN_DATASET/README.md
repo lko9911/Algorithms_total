@@ -38,6 +38,16 @@ image_urls = {
     # 추가 클래스 및 이미지 URL 추가 가능
 }</code></pre>
 
+### 참고
+<pre><code>
+image_urls = [
+    "https://example.com/image1.jpg",
+    "https://example.com/image2.jpg",
+    "https://example.com/image3.jpg",
+    # 추가 이미지 URL 추가 가능
+]</code></pre>
+
+
 ### 5. 데이터셋 생성및 저장
 <pre><code>for cls, urls in image_urls.items():
     for idx, url in enumerate(urls):
