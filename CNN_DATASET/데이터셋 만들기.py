@@ -59,4 +59,4 @@ def load_dataset(dataset_dir, classes, image_size=(32, 32)):
 images, labels = load_dataset(dataset_dir, classes)
 
 # 데이터셋을 npz 파일로 저장
-np.savez('cifar10_like_dataset.npz', images=images, labels=labels)
+np.savez('dataset.npz', images=images, labels=labels)
