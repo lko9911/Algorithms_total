@@ -21,20 +21,54 @@
 <pre><code>/dataset/crack_labels.csv</code></pre>
 ![화면 캡처 2024-07-01 141804](https://github.com/lko9911/Algorithms_total/assets/160494158/29bc8ea7-bc19-4e75-bb50-d5da28bd9d66)
 
-### 2단계 : YOLO 모델 재학습 ✔️
-준비물 : 'cfg', 'weights', 'obj.names', 'obj.data' 어노테이션 파일
-솔류션 : PLAT_YOLO v5 학습, 데이터셋 라벨링을 따로 만들기
+### 2단계 : YOLO v8 모델 재학습 ✔️
+- YOLOv8 설치 & 모델 학습 후 저장
+<pre><code>!pip install ultralytics
 
-- YOLO 설정 파일 수정
-<pre><code>convolutional]
-filters=21  # (classes + 5) * 3
+from ultralytics import YOLO
 
-[yolo]
-classes=2</code></pre>
+# YOLOv8 모델 로드 및 학습
+model = YOLO('yolov8n.pt')  
+model.train(data='coco128.yaml', epochs=10)
 
-- YOLO 모델 학습
-<pre><code>./darknet detector train data/obj.data cfg/yolov3.cfg yolov3.conv.74
+# 학습된 모델 저장
+model.save('model_yolo8.pt')
 </code></pre>
+
+- YOLOv8 모델 로드 및 예측
+<pre><code>from ultralytics import YOLO
+import cv2 as cv
+import numpy as np
+
+# 학습된 YOLOv8 모델 로드
+model = YOLO('model_yolo8.pt')
+
+# 이미지 로드
+image_path = 'path_to_your_image.png'
+img = cv.imread(image_path)
+
+# 이미지 전처리 및 예측
+results = model(img)
+
+# 예측 결과 처리 및 표시
+for result in results:
+    boxes = result.boxes
+    for box in boxes:
+        x1, y1, x2, y2 = map(int, box.xyxy[0])
+        confidence = box.conf[0]
+        class_id = int(box.cls[0])
+        label = f"{model.names[class_id]} {confidence:.2f}"
+        color = (0, 255, 0)
+        cv.rectangle(img, (x1, y1), (x2, y2), color, 2)
+        cv.putText(img, label, (x1, y1 - 10), cv.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+
+# 결과 이미지 파일로 저장
+cv.imwrite('predicted_objects.jpg', img)
+
+# 결과 이미지 출력
+cv.imshow('Object detection and prediction', img)
+cv.waitKey(0)
+cv.destroyAllWindows()</code></pre>
 
 ### 3단계 : 품종 예측 모델 (CNN) ✔️
 - 데이터셋 불러오기
