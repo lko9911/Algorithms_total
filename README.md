@@ -1,24 +1,11 @@
-## 1. 이미지 전처리 🐬
-- 사진에서 객체만 추출하기
-- 추출된 데이터 분류및 데이터 셋 작업
-
-딥러닝 : YOLO / 사용자 지정 : grabCut 
-
-## 2. 색상 알고리즘 🛩️
-- 색상 등록 (표준, 사진과 이미지)
-- 색상을 판단할 사진 입력 (전처리x)
-- 색상을 판단할 사진 입력 (grabCut 적용 이미지)
-<br>
-
-
 # 모델링 계획 :star:
 
 ### 목표  
 - 객체 탐지 (YOLO-spp 재학습)  
 - 탐지된 식물 영역에 대해 식물의 여러 특성 및 품종 예측 (수치화)
 
-### 1단계 : 데이터셋 준비(YOLO가 아닌 CNN 전용 데이터셋) ✔️
-- 이미지 데이터의 저장 형태
+### 1단계 : 데이터셋 준비(YOLO / CNN 구분) ✔️
+- 이미지 데이터의 저장 형태 (CNN)
 <pre><code>/dataset
     /species_1
         - img1.jpg
@@ -242,3 +229,18 @@ print(f'Species Prediction: {species_prediction}')
 print(f'Crack Level Prediction: {crack_level_prediction}')
 print(f'Color Intensity Prediction: {color_intensity_prediction}')
 print(f'Leaf Size Prediction: {leaf_size_prediction}')</code></pre>
+
+<br>
+
+# 추가
+
+### 1. 이미지 전처리 🐬
+- 사진에서 객체만 추출하기
+- 추출된 데이터 분류및 데이터 셋 작업
+
+딥러닝 : YOLO / 사용자 지정 : grabCut 
+
+### 2. 색상 알고리즘 🛩️
+- 색상 등록 (표준, 사진과 이미지)
+- 색상을 판단할 사진 입력 (전처리x)
+- 색상을 판단할 사진 입력 (grabCut 적용 이미지)
