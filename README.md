@@ -2,7 +2,7 @@
 
 ### 목표  
 - 객체 탐지 (YOLO-spp 재학습)  
-- 탐지된 식물 영역에 대해 식물의 여러 특성 및 품종 예측 (수치화)
+- 탐지된 식물 영역에 대해 식물의 여러 특성 및 품종 예측 (정량화 / 분류)
 
 ### 1단계 : 데이터셋 준비(YOLO / CNN 구분) ✔️
 - 이미지 데이터의 저장 형태 (CNN)
@@ -70,7 +70,7 @@ cv.imshow('Object detection and prediction', img)
 cv.waitKey(0)
 cv.destroyAllWindows()</code></pre>
 
-### 3단계 : 품종 예측 모델 (CNN) ✔️
+### 3단계 : 품종 예측 모델 (CNN _ 백본모델을 통한 전이학습) ✔️
 - 데이터셋 불러오기
 <pre><code>import pandas as pd
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
