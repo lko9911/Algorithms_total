@@ -70,7 +70,7 @@ cv.imshow('Object detection and prediction', img)
 cv.waitKey(0)
 cv.destroyAllWindows()</code></pre>
 
-### 3단계 : 품종 예측 모델 (CNN _ 백본모델을 통한 전이학습) ✔️
+### 3단계 : 특성 예측 모델 (CNN _ 백본모델을 통한 전이학습) ✔️
 - 데이터셋 불러오기
 <pre><code>import pandas as pd
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
